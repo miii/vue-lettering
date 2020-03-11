@@ -1,15 +1,29 @@
 {
   "name": "@miii/vue-lettering",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "demo": "vue-cli-service demo",
+    "docs": "npm run docs:serve",
+    "docs:build": "vue-cli-service docs --mode build",
+    "docs:serve": "vue-cli-service docs --mode serve",
+    "prepublish": "vue-cli-service lint && vue-cli-service docs --mode build && vue-cli-service build",
+    "start": "vue-cli-service serve"
   },
-  "dependencies": {
-    "vue": "^2.6.11"
-  },
+  "main": "dist/vue-lettering.common.js",
+  "module": "dist/vue-lettering.esm.js",
+  "unpkg": "dist/vue-lettering.umd.min.js",
+  "files": [
+    "dist/vue-lettering.common.js",
+    "dist/vue-lettering.umd.min.js",
+    "dist/vue-lettering.umd.js",
+    "dist/vue-lettering.esm.js",
+    "src",
+    "types/index.d.ts"
+  ],
+  "dependencies": {},
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.18.0",
     "@typescript-eslint/parser": "^2.18.0",
@@ -25,6 +39,11 @@
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^6.1.2",
     "typescript": "~3.7.5",
-    "vue-template-compiler": "^2.6.11"
-  }
+    "vue-cli-plugin-p11n": "^0.4.0",
+    "vue-template-compiler": "^2.6.11",
+    "vue": "^2.6.11"
+  },
+  "jsdelivr": "dist/vue-lettering.umd.min.js",
+  "sideeffects": false,
+  "types": "types/index.d.ts"
 }
