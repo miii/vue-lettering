@@ -1,5 +1,5 @@
 # @miii/vue-lettering
-Custom Vue directive to split text into pieces for CSS selection with ease. Helps you work with Web Typography with charm.<br>
+Web Typography tool for Vue to split text into pieces for CSS selection with ease.<br>
 Inspired by [Lettering.js](davatron5000/Lettering.js).
 
 
@@ -31,7 +31,7 @@ In your template:
 <h1 v-lettering>Foo</h1>
 ```
 
-Rendered results:
+Will output:
 ```html
 <h1 aria-label="Foo">
   <span class="vl__g vl--i-1" aria-hidden="true">F</span>
@@ -41,7 +41,8 @@ Rendered results:
 ```
 
 ## ⚙️  Options
-The plugin provides many options to help your customize the behavior of the injection. [Click here](./OPTIONS.md) to read the full documentation.
+The plugin provides many options to help your customize the behavior of the injection.<br>
+[Click here](./OPTIONS.md) to read the full documentation.
 
 ## 🔉  Accessibility
 This plugin adds `aria-label` and `aria-hidden` to the injected elements to make them accessibile by default to users with screenreaders. Read more [here](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA).
