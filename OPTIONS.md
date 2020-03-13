@@ -1,6 +1,20 @@
-## Options
+# Plugin options
 The plugin provides many options to help your customize the behavior of the injection.
 
+## Set options globally
+All properties can be set globally or on specific elements.<br>
+Set options globally:
+```js
+import Vue from 'vue'
+import VueLettering from '@miii/vue-lettering'
+
+Vue.use(VueLettering, {
+  tagName: 'a',
+  // ...
+})
+```
+
+## Options
 <a name="tagName"></a>
 ### `tagName` - Use custom tag
 > <strong>Type:</strong> `string`<br>
