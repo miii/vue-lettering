@@ -23,4 +23,5 @@ docs/.vuepress/dist
 *.njsproj
 *.sln
 *.sw*
-  
+
+dist

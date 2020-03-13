@@ -1,4 +1,5 @@
 import { VueConstructor, PluginObject } from 'vue'
+import { bind } from './lettering'
 
 declare global {
   interface Window {
@@ -9,19 +10,7 @@ declare global {
 const version = '__VERSION__'
 
 const install = (Vue: VueConstructor): void => {
-  /*
-   * NOTE:
-   *   if you need to extend Vue contstructor, you can extend it in here.
-   */
-
-  Vue.prototype.$add = (a: number, b: number): number => {
-    return a + b
-  }
-
-  /*
-   * NOTE:
-   *  somthing implementation here ...
-   */
+  Vue.directive('lettering', { bind })
 }
 
 const plugin: PluginObject<VueConstructor> = {

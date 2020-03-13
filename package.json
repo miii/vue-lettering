@@ -1,15 +1,15 @@
 {
   "name": "@miii/vue-lettering",
-  "version": "0.1.0",
+  "description": "Use lettering.js with Vue",
+  "author": "Jacob Andersson",
+  "version": "1.0.0",
+  "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "demo": "vue-cli-service demo",
-    "docs": "npm run docs:serve",
-    "docs:build": "vue-cli-service docs --mode build",
-    "docs:serve": "vue-cli-service docs --mode serve",
-    "prepublish": "vue-cli-service lint && vue-cli-service docs --mode build && vue-cli-service build",
+    "prepublish": "vue-cli-service lint && vue-cli-service build",
     "start": "vue-cli-service serve"
   },
   "main": "dist/vue-lettering.common.js",
@@ -44,6 +44,5 @@
     "vue": "^2.6.11"
   },
   "jsdelivr": "dist/vue-lettering.umd.min.js",
-  "sideeffects": false,
-  "types": "types/index.d.ts"
+  "sideeffects": false
 }
