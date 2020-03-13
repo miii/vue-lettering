@@ -1,6 +1,6 @@
 {
   "name": "@miii/vue-lettering",
-  "description": "Use lettering.js with Vue",
+  "description": "Web Typography tool to split text into pieces for CSS selection with ease.",
   "author": "Jacob Andersson",
   "version": "1.0.0",
   "license": "MIT",
@@ -15,6 +15,7 @@
   "main": "dist/vue-lettering.common.js",
   "module": "dist/vue-lettering.esm.js",
   "unpkg": "dist/vue-lettering.umd.min.js",
+  "types": "types/index.d.ts",
   "files": [
     "dist/vue-lettering.common.js",
     "dist/vue-lettering.umd.min.js",
