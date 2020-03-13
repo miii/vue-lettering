@@ -1,5 +1,5 @@
 # @miii/vue-lettering
-Web Typography tool to split text into pieces for CSS selection with ease.<br>
+Web Typography tool for Vue to split text into pieces for CSS selection with ease.<br>
 Typescript ready. Inspired by [Lettering.js](davatron5000/Lettering.js).
 
 
@@ -33,7 +33,7 @@ In your template:
 <h1 v-lettering>Foo</h1>
 ```
 
-Rendered results:
+Will output:
 ```html
 <h1 aria-label="Foo">
   <span class="vl__g vl--i-1" aria-hidden="true">F</span>
