@@ -1,9 +1,10 @@
 # Plugin options
 The plugin provides many options to help your customize the behavior of the injection.
 
-## Set options globally
-All properties can be set globally or on specific elements.<br>
-Set options globally:
+## Global or individual options
+All properties can be set globally or individually.
+
+Set option on all elements:
 ```js
 import Vue from 'vue'
 import VueLettering from '@miii/vue-lettering'
@@ -12,6 +13,11 @@ Vue.use(VueLettering, {
   tagName: 'a',
   // ...
 })
+```
+
+Set option on specific element:
+```html
+<h1 v-lettering="{ tagName: 'a' }">Foo</h1>
 ```
 
 ## Options
@@ -91,7 +97,7 @@ Example CSS selections:
 }
 ```
 
-> <strong>Note:</strong><br>The `vl--lvl-x` class will be injected automatically if multiple splits are enabled.
+> <strong>Note:</strong><br>The `vl--lvl-<x>` class will be injected automatically if multiple splits are provided.
 
 ### `char` - Modify leaf characters/strings
 > <strong>Type:</strong> `(char: string) => string`<br>
@@ -143,13 +149,17 @@ Will output:
 >  // Default value: true
 >  group: boolean,
 >
->  // Default value: true (will only inject if nested splits)
+>  // Default value: true (will only inject if multiple splits)
 >  level: boolean,
 >
 >  // Default value: true
 >  index: boolean,
 > }
 > ```
+Allow injector of selector classes.
+- Group: `.vl__g`
+- Level: `.vl--lvl-<x>`
+- Index: `.vl--i-<x>`
 
 ```html
 <h1
