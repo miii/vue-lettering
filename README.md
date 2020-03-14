@@ -7,6 +7,7 @@ Inspired by [Lettering.js](davatron5000/Lettering.js).
 
 
 <strong>Typescript ready 🌟</strong><br>
+<strong>SSR ready 🌟</strong><br>
 <strong>Supports nested splits 🌟</strong>
 
 <img src="https://user-images.githubusercontent.com/158975/76612092-e9d82380-651b-11ea-8400-7eb7031cfd8c.png" width="500">
