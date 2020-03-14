@@ -3,7 +3,7 @@
 
 The plugin adds a `v-lettering` directive which can be used to create groups of (individual) letters using `span` or tag of your choice.
 
-Inspired by [Lettering.js](davatron5000/Lettering.js).
+Inspired by [Lettering.js](https://github.com/davatron5000/Lettering.js).
 
 
 <strong>Typescript ready 🌟</strong><br>
