@@ -20,6 +20,8 @@ Set option on specific element:
 <h1 v-lettering="{ tagName: 'a' }">Foo</h1>
 ```
 
+> **Note:** Element options will always override global options.
+
 ## Options
 <a name="tagName"></a>
 ### `tagName` - Use custom tag
@@ -156,7 +158,7 @@ Will output:
 >  index: boolean,
 > }
 > ```
-Allow injector of selector classes.
+Allow injection of selector classes.
 - Group: `.vl__g`
 - Level: `.vl--lvl-<x>`
 - Index: `.vl--i-<x>`
@@ -177,6 +179,7 @@ Allow injector of selector classes.
 Will output:
 ```html
 <h1 aria-label="Foo">
+  <!-- Omit class names -->
   <span aria-hidden="true">F</span>
   <span aria-hidden="true">o</span>
   <span aria-hidden="true">o</span>
