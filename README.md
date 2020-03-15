@@ -1,4 +1,4 @@
-# @miii/vue-lettering
+# @miii/vue-lettering<br>![NPM badge](https://img.shields.io/npm/v/@miii/vue-lettering)
 > Web Typography tool for Vue to split text into pieces for CSS selection with ease.<br>
 
 The plugin adds a `v-lettering` directive which can be used to create groups of (individual) letters using `span` or tag of your choice.
@@ -47,8 +47,10 @@ Rendered output:
 </h1>
 ```
 
+Read the full documentation [here](https://miii.github.io/vue-lettering/).
+
 ## 🔉  Accessibility
-This plugin adds `aria-label` and `aria-hidden` to the injected elements to make them accessibile to users with screenreaders.
+This plugin uses the [WAI-ARIA](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/WAI-ARIA_basics) guidelines on the injected elements to make them accessibile to users with screenreaders.
 
 ## ❗️ Issues
 If you have any feedback or suggestions, please feel free to write an issue or PR.

@@ -30,8 +30,8 @@ Set option on specific element:
 ## Options
 ### `tagName`
 #### Use custom tag
-> <strong>Type:</strong> `string`<br>
-> <strong>Default value:</strong> `'span'`
+> **Type:** `string`<br>
+> **Default value:** `'span'`
 
 Use modifier or `tagName` option to customize injected tag name.
 ```html
@@ -50,8 +50,8 @@ Will output:
 
 ### `splits`
 #### Set custom splits
-> <strong>Type:</strong> `string | Regexp | (string | Regexp)[]`<br>
-> <strong>Default value:</strong> `''`
+> **Type:** `string | Regexp | (string | Regexp)[]`<br>
+> **Default value:** `''`
 
 By default the plugin will split every character into a group, but you can easily customize this to create multiple splits and nested groups. The plugin will run a recursive [split](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split).
 
@@ -72,8 +72,8 @@ Will output:
     class="vl__g vl--lvl-1 vl--i-1"
     aria-hidden="true"
   >
-    <span class="vl__g vl--lvl-2 vl--i-1">D</a>
-    <span class="vl__g vl--lvl-2 vl--i-2">o</a>
+    <span class="vl__g vl--lvl-2 vl--i-1">D</span>
+    <span class="vl__g vl--lvl-2 vl--i-2">o</span>
   </span>
 
   <!-- "it" group -->
@@ -81,8 +81,8 @@ Will output:
     class="vl__g vl--lvl-1 vl--i-2"
     aria-hidden="true"
   >
-    <span class="vl__g vl--lvl-2 vl--i-1">i</a>
-    <span class="vl__g vl--lvl-2 vl--i-2">t</a>
+    <span class="vl__g vl--lvl-2 vl--i-1">i</span>
+    <span class="vl__g vl--lvl-2 vl--i-2">t</span>
   </span>
 
 </h1>
@@ -105,7 +105,7 @@ Example CSS selections:
 }
 ```
 
-> <strong>Note:</strong><br>The `vl--lvl-<x>` class will be injected automatically if multiple splits are provided.
+> **Note:**<br>The `vl--lvl-<x>` class will be injected automatically if multiple splits are provided.
 
 ### `char`
 #### Modify leaf characters/strings
@@ -129,8 +129,7 @@ Will output:
 
 ### `className`
 #### Add custom class names
-> <strong>Type:</strong><br>`string | (index: number, level: number, char: string) => string`<br>
-> <strong>Default value:</strong> `''`
+> **Type:**<br>`string | (index: number, level: number, char: string) => string`
 
 Add custom class names to injected groups.
 ```html
@@ -147,14 +146,14 @@ Will output:
 ```html
 <h1 aria-label="Foo">
   <span class="vl__g vl--i-1 char-F" aria-hidden="true">F</span>
-  <span class="vl__g vl--i-1 char-o" aria-hidden="true">o</span>
-  <span class="vl__g vl--i-1 char-o" aria-hidden="true">o</span>
+  <span class="vl__g vl--i-2 char-o" aria-hidden="true">o</span>
+  <span class="vl__g vl--i-3 char-o" aria-hidden="true">o</span>
 </h1>
 ```
 
 ### `classNameInjection`
 #### Automatic class name injection
-> <strong>Type and default values:</strong>
+> **Type and default values:**
 > ```typescript
 > {
 >  // Default value: true
@@ -192,5 +191,36 @@ Will output:
   <span aria-hidden="true">F</span>
   <span aria-hidden="true">o</span>
   <span aria-hidden="true">o</span>
+</h1>
+```
+
+::: warning
+`.vl--i-<x>` and `.vl--lvl-<x>` **always** starts from index 1.
+:::
+
+### `beforeAppend`
+> **Type**: `(element: HTMLElement, index: number, level: number) => unknown`
+
+Modify element before appending to the DOM tree.
+```html
+<h1
+  v-lettering="{
+    beforeAppend: (el, index) => {
+      if (index === 2)
+        el.dataset.foo = 'bar'
+    }
+  }"
+>
+  Foo bar
+</h1>
+```
+
+Will output:
+```html{3}
+<h1 aria-label="Foo bar">
+  <span aria-hidden="true">F</span>
+  <span aria-hidden="true" data-foo="bar">o</span>
+  <span aria-hidden="true">o</span>
+  <!-- ... -->
 </h1>
 ```

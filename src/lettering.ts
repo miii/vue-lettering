@@ -54,9 +54,9 @@ interface PluginDirectiveOptions {
   };
 
   /**
-   * Before append callback
+   * Before append hook
    */
-  beforeAppend?: (element: HTMLElement) => unknown;
+  beforeAppend?: (element: HTMLElement, index: number, level: number) => unknown;
 }
 export type VueLetteringOptions = Partial<PluginDirectiveOptions>
 
@@ -106,8 +106,6 @@ export const bind = (el: HTMLElement, binding: DirectiveBinding) => {
   const runSplit = (el: HTMLElement, groups: string[], level = 1) => {
     // Check if all leafs are found
     if (level > splits.length) {
-      // Run beforeAppend callback
-      if (options.beforeAppend) options.beforeAppend(el)
       // Add character
       el.innerHTML = options.char(groups[0])
 
@@ -131,6 +129,9 @@ export const bind = (el: HTMLElement, binding: DirectiveBinding) => {
       if (options.classNameInjection.group) subEl.classList.add('vl__g')
       if (options.classNameInjection.level && splits.length > 1) subEl.classList.add(`vl--lvl-${level}`)
       if (options.classNameInjection.index) subEl.classList.add(`vl--i-${index + 1}`)
+
+      // Run beforeAppend hook
+      if (options.beforeAppend) options.beforeAppend(el, index + 1, level)
 
       // Split another level
       runSplit(subEl, group.split(splits[level]), level + 1)

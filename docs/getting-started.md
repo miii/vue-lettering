@@ -52,6 +52,45 @@ Rendered output:
 </h1>
 ```
 
+## Advanced usage
+
+In your template:
+```html
+<h1
+  v-lettering="{
+    tagName: 'a',
+    splits: [' ', '']
+  }"
+>
+  Do it
+</h1>
+```
+
+Rendered output:
+```html
+<h1 aria-label="Do it">
+
+  <!-- "Do" group -->
+  <a
+    class="vl__g vl--lvl-1 vl--i-1"
+    aria-hidden="true"
+  >
+    <a class="vl__g vl--lvl-2 vl--i-1">D</a>
+    <a class="vl__g vl--lvl-2 vl--i-2">o</a>
+  </a>
+
+  <!-- "it" group -->
+  <a
+    class="vl__g vl--lvl-1 vl--i-2"
+    aria-hidden="true"
+  >
+    <a class="vl__g vl--lvl-2 vl--i-1">i</a>
+    <a class="vl__g vl--lvl-2 vl--i-2">t</a>
+  </a>
+
+</h1>
+```
+
 ::: tip
-Use [custom options](options.html) to customize the behavior of the injection.
+Check out all available options [here](options.html).
 :::

@@ -9,7 +9,7 @@ Add the `v-lettering` directive to your element.
 <h1 v-lettering>Foo</h1>
 ```
 
-Rendered output:
+The plugin will render the following output:
 ```html
 <h1 aria-label="Foo">
   <span class="vl__g vl--i-1" aria-hidden="true">F</span>
@@ -25,12 +25,8 @@ Some of the features includes:
 - Typescript ready<br>
 - SSR ready<br>
 
-## Options
-The plugin provides many options to help your customize the behavior of the injection.<br>
-[Click here](./OPTIONS.md) to read more about the available options.
-
-## Accessibility
-This plugin adds `aria-label` and `aria-hidden` to the injected elements to make them accessibile by default to users with screenreaders. Read more [here](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA).
+## 🔉  Accessibility
+This plugin uses the [WAI-ARIA](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/WAI-ARIA_basics) guidelines on the injected elements to make them accessibile to users with screenreaders.
 
 ## Issues
 If you have any feedback or suggestions, please feel free to write an [issue](https://github.com/miii/vue-lettering/issues) or [PR](https://github.com/miii/vue-lettering/pulls).
