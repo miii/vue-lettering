@@ -22,18 +22,16 @@ jobs:
 
       - name: Install dependencies
         run: yarn install
-        env:
-          NODE_ENV: production
 
       - name: Build docs
         run: yarn run docs:build
-        env:
-          NODE_ENV: production
 
       - name: GitHub Pages
         uses: crazy-max/ghaction-github-pages@v1.3.0
         with:
           # Build directory to deploy
           build_dir: docs/.vuepress/dist
+        
         env:
+          NODE_ENV: production
           GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
