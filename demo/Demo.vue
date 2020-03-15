@@ -20,10 +20,6 @@ export default Vue.extend({
 <style>
 @import url('https://fonts.googleapis.com/css?family=Titillium+Web:700&display=swap');
 
-body {
-  background: #111;
-}
-
 .demo {
   display: flex;
   align-items: center;
@@ -35,7 +31,7 @@ body {
   font-family: 'Titillium Web';
   text-transform: uppercase;
   color: #c44032;
-  text-shadow: rgba(255, 255, 255, 0.15) -4px 4px 0;
+  text-shadow: rgba(0, 0, 0, 0.15) -4px 4px 0;
   font-size: 6rem;
   letter-spacing: .6rem;
   transform: scaleY(1.3);

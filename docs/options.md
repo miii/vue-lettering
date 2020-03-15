@@ -1,5 +1,9 @@
-# Plugin options
-The plugin provides many options to help your customize the behavior of the injection.
+---
+sidebarDepth: 2
+---
+
+# Options
+Vue Lettering provides many options to help your customize the behavior of the injection.
 
 ## Global or individual options
 All properties can be set globally or individually.
@@ -20,11 +24,12 @@ Set option on specific element:
 <h1 v-lettering="{ tagName: 'a' }">Foo</h1>
 ```
 
-> **Note:** Element options will always override global options.
+> **Note:**<br>
+> Options set on the element will always override global options.
 
 ## Options
-<a name="tagName"></a>
-### `tagName` - Use custom tag
+### `tagName`
+#### Use custom tag
 > <strong>Type:</strong> `string`<br>
 > <strong>Default value:</strong> `'span'`
 
@@ -43,7 +48,8 @@ Will output:
 </h1>
 ```
 
-### `splits` - Set custom splits
+### `splits`
+#### Set custom splits
 > <strong>Type:</strong> `string | Regexp | (string | Regexp)[]`<br>
 > <strong>Default value:</strong> `''`
 
@@ -101,7 +107,8 @@ Example CSS selections:
 
 > <strong>Note:</strong><br>The `vl--lvl-<x>` class will be injected automatically if multiple splits are provided.
 
-### `char` - Modify leaf characters/strings
+### `char`
+#### Modify leaf characters/strings
 > <strong>Type:</strong> `(char: string) => string`<br>
 > <strong>Default value:</strong> `(text) => text.replace(' ', '&nbsp;'),`
 
@@ -120,7 +127,8 @@ Will output:
 </h1>
 ```
 
-### `className` - Add custom class names
+### `className`
+#### Add custom class names
 > <strong>Type:</strong><br>`string | (index: number, level: number, char: string) => string`<br>
 > <strong>Default value:</strong> `''`
 
@@ -144,7 +152,8 @@ Will output:
 </h1>
 ```
 
-### `classNameInjection` - Automatic class name injection
+### `classNameInjection`
+#### Automatic class name injection
 > <strong>Type and default values:</strong>
 > ```typescript
 > {

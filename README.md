@@ -10,7 +10,7 @@ Inspired by [Lettering.js](https://github.com/davatron5000/Lettering.js).
 <strong>SSR ready 🌟</strong><br>
 <strong>Supports nested splits 🌟</strong>
 
-<img src="https://user-images.githubusercontent.com/158975/76612092-e9d82380-651b-11ea-8400-7eb7031cfd8c.png" width="500">
+<img src="https://user-images.githubusercontent.com/158975/76702748-a1ac3300-66cc-11ea-83d1-1bcf6fb24d0b.png" width="600">
 
 ## 📦  Install
 ```sh
@@ -47,12 +47,8 @@ Rendered output:
 </h1>
 ```
 
-## ⚙️  Options
-The plugin provides many options to help your customize the behavior of the injection.<br>
-[Click here](./OPTIONS.md) to read more about the available options.
-
 ## 🔉  Accessibility
-This plugin adds `aria-label` and `aria-hidden` to the injected elements to make them accessibile by default to users with screenreaders. Read more [here](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA).
+This plugin adds `aria-label` and `aria-hidden` to the injected elements to make them accessibile to users with screenreaders.
 
 ## ❗️ Issues
 If you have any feedback or suggestions, please feel free to write an issue or PR.
