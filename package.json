@@ -1,10 +1,18 @@
 {
   "name": "@miii/vue-lettering",
-  "description": "Web Typography tool for Vue to split text into pieces for CSS selection with ease.",
+  "description": "Web typography tool for Vue to split text into pieces for CSS selection with ease.",
   "author": "Jacob Andersson",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "homepage": "https://github.com/miii/vue-lettering",
+  "keywords": [
+    "vue",
+    "directive",
+    "lettering",
+    "typography",
+    "kerning",
+    "charming"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/miii/vue-lettering"

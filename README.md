@@ -1,5 +1,5 @@
-# @miii/vue-lettering<br>![NPM badge](https://img.shields.io/npm/v/@miii/vue-lettering)
-> Web Typography tool for Vue to split text into pieces for CSS selection with ease.<br>
+# @miii/vue-lettering<br>![NPM badge](https://img.shields.io/npm/v/@miii/vue-lettering) ![Minified size](https://img.shields.io/bundlephobia/min/@miii/vue-lettering)
+> Web typography tool for Vue to split text into pieces for CSS selection with ease.<br>
 
 The plugin adds a `v-lettering` directive which can be used to create groups of (individual) letters using `span` or tag of your choice.
 
@@ -10,7 +10,7 @@ Inspired by [Lettering.js](https://github.com/davatron5000/Lettering.js).
 <strong>SSR ready 🌟</strong><br>
 <strong>Supports nested splits 🌟</strong>
 
-<img src="https://user-images.githubusercontent.com/158975/76702748-a1ac3300-66cc-11ea-83d1-1bcf6fb24d0b.png" width="600">
+<img src="https://user-images.githubusercontent.com/158975/76702748-a1ac3300-66cc-11ea-83d1-1bcf6fb24d0b.png" width="500">
 
 ## 📦  Install
 ```sh

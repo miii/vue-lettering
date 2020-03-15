@@ -25,7 +25,7 @@ Some of the features includes:
 - Typescript ready<br>
 - SSR ready<br>
 
-## 🔉  Accessibility
+## Accessibility
 This plugin uses the [WAI-ARIA](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/WAI-ARIA_basics) guidelines on the injected elements to make them accessibile to users with screenreaders.
 
 ## Issues
