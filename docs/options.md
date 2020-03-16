@@ -5,10 +5,10 @@ sidebarDepth: 2
 # Options
 Vue Lettering provides many options to help your customize the behavior of the injection.
 
-## Global or individual options
-All properties can be set globally or individually.
+## Global or local options
+All properties can be set globally or on single elements.
 
-Set option on all elements:
+Example with options applied globally to affect all elements:
 ```js
 import Vue from 'vue'
 import VueLettering from '@miii/vue-lettering'
@@ -19,13 +19,14 @@ Vue.use(VueLettering, {
 })
 ```
 
-Set option on specific element:
+Example with option set on specific element:
 ```html
 <h1 v-lettering="{ tagName: 'a' }">Foo</h1>
 ```
 
-> **Note:**<br>
-> Options set on the element will always override global options.
+::: warning
+Local options will override equivalent global options.
+:::
 
 ## Options
 ### `tagName`
@@ -105,7 +106,7 @@ Example CSS selections:
 }
 ```
 
-> **Note:**<br>The `vl--lvl-<x>` class will be injected automatically if multiple splits are provided.
+> **Note:**<br>The `vl--lvl-<x>` class will be injected automatically if multiple splits are provided. This can be turned off using the [`classNameInjection.level`](#classnameinjection) option.
 
 ### `char`
 #### Modify leaf characters/strings
@@ -167,10 +168,17 @@ Will output:
 > }
 > ```
 Allow injection of selector classes.
-- Group: `.vl__g`
-- Level: `.vl--lvl-<x>`
-- Index: `.vl--i-<x>`
+| Type  | Injected class name |
+| ---   | ---                 |
+| Group | `.vl__g`            |
+| Level | `.vl--lvl-<x>`      |
+| Index | `.vl--i-<x>`        |
 
+::: warning
+`.vl--i-<x>` and `.vl--lvl-<x>` **always** starts from index 1.
+:::
+
+Disable group and index class injection:
 ```html
 <h1
   v-lettering="{
@@ -193,10 +201,6 @@ Will output:
   <span aria-hidden="true">o</span>
 </h1>
 ```
-
-::: warning
-`.vl--i-<x>` and `.vl--lvl-<x>` **always** starts from index 1.
-:::
 
 ### `beforeAppend`
 > **Type**: `(element: HTMLElement, index: number, level: number) => unknown`

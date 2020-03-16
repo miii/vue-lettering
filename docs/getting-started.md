@@ -53,8 +53,9 @@ Rendered output:
 ```
 
 ## Advanced usage
+Vue Lettering provides many options to help your customize the behavior of the injection. Options can be applied globally or on individual elements.
 
-In your template:
+Example with custom options applied:
 ```html
 <h1
   v-lettering="{
@@ -94,3 +95,14 @@ Rendered output:
 ::: tip
 Check out all available options [here](options.html).
 :::
+
+## Playground
+Play around with the plugin in action.
+
+<iframe
+  src="https://codesandbox.io/embed/vue-lettering-usage-example-iceyb?fontsize=13&hidenavigation=1&module=%2Fsrc%2FApp.vue&theme=dark&view=editor"
+  style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+  title="Vue Lettering - Usage Example"
+  allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+></iframe>

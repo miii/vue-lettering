@@ -1,7 +1,12 @@
-const { description } = require('../../package.json')
+const { description, version } = require('../../package.json')
 
 module.exports = {
   base: '/vue-lettering/',
+  head: [
+    ['link', { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png"}],
+    ['link', { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16x16.png"}],
+    ['link', { rel: "shortcut icon", href: "/favicon.ico"}],
+  ],
   plugins: [
     require('./plugin.js')
   ],
@@ -15,6 +20,9 @@ module.exports = {
   themeConfig: {
     repo: 'miii/vue-lettering',
     docsDir: 'docs',
+    nav: [
+      { text: `Latest version ${version}`, link: 'https://www.npmjs.com/package/@miii/vue-lettering', target:'_blank' },
+    ],
     locales: {
       '/': {
         label: 'English',
