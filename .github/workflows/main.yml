@@ -35,3 +35,4 @@ jobs:
         env:
           NODE_ENV: production
           GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
+          GA_ID: ${{ secrets.GA_ID }}

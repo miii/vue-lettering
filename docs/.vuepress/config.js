@@ -8,7 +8,13 @@ module.exports = {
     ['link', { rel: "shortcut icon", href: "/favicon.ico"}],
   ],
   plugins: [
-    require('./plugin.js')
+    require('./plugin.js'),
+    [
+      '@vuepress/google-analytics',
+      {
+        ga: process.env.GA_ID,
+      }
+    ],
   ],
   locales: {
     '/': {
