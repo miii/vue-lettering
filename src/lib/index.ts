@@ -1,5 +1,6 @@
 import { VueConstructor, PluginObject } from 'vue'
-import { bind, VueLetteringOptions, defaults } from './lettering'
+import { version } from '../../package.json'
+import { bind, PartialVueLetteringOptions, defaults } from './lettering'
 
 declare global {
   interface Window {
@@ -7,9 +8,7 @@ declare global {
   }
 }
 
-const version = '__VERSION__'
-
-const install = (Vue: VueConstructor, options?: VueLetteringOptions): void => {
+const install = (Vue: VueConstructor, options?: PartialVueLetteringOptions): void => {
   if (options)
     Object.keys(options).forEach((key) => {
       // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
@@ -20,7 +19,7 @@ const install = (Vue: VueConstructor, options?: VueLetteringOptions): void => {
   Vue.directive('lettering', { bind })
 }
 
-const plugin: PluginObject<VueLetteringOptions> = {
+const plugin: PluginObject<PartialVueLetteringOptions> = {
   install,
   version
 }

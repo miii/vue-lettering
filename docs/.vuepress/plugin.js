@@ -12,7 +12,7 @@ module.exports = (/*options, ctx*/) => ({
   })
 }`
     return [{
-      name: 'vuepress-plugin-vue-cli-plugin-p11n',
+      name: 'vuepress-plugin-vue-lettering',
       content: code
     }]
   }

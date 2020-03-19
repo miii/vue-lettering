@@ -27,7 +27,7 @@ module.exports = {
     repo: 'miii/vue-lettering',
     docsDir: 'docs',
     nav: [
-      { text: `Latest version ${version}`, link: 'https://www.npmjs.com/package/@miii/vue-lettering', target:'_blank' },
+      { text: `Version ${version}`, link: 'https://www.npmjs.com/package/@miii/vue-lettering', target:'_blank' },
     ],
     locales: {
       '/': {

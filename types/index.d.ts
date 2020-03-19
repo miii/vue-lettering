@@ -1,9 +1,9 @@
 import { PluginObject, DirectiveOptions } from 'vue'
-import { VueLetteringOptions } from '../src/lettering'
+import { PartialVueLetteringOptions } from '../src/lib/lettering'
 
 export {
-  VueLetteringOptions
+  PartialVueLetteringOptions
 }
 
-declare const _default: PluginObject<VueLetteringOptions> & DirectiveOptions
+declare const _default: PluginObject<PartialVueLetteringOptions> & DirectiveOptions
 export default _default
