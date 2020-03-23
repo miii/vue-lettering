@@ -29,7 +29,8 @@
     "docs:build": "NODE_ENV=production vue-cli-service docs --mode build",
     "docs:serve": "vue-cli-service docs --mode serve",
     "prepublish": "npm run lint && npm run docs:build && npm run build",
-    "start": "vue-cli-service serve"
+    "start": "vue-cli-service serve",
+    "commit": "npx git-cz"
   },
   "main": "dist/vue-lettering.common.js",
   "module": "dist/vue-lettering.esm.js",
@@ -47,6 +48,8 @@
   ],
   "dependencies": {},
   "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^2.18.0",
     "@typescript-eslint/parser": "^2.18.0",
     "@vue/cli-plugin-eslint": "^4.2.0",
@@ -61,9 +64,15 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^6.1.2",
+    "husky": "^4.2.3",
     "typescript": "^3.8.3",
     "vue": "^2.6.11",
     "vue-cli-plugin-p11n": "^0.4.0",
     "vue-template-compiler": "^2.6.11"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }
