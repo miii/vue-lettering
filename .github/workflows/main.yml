@@ -25,14 +25,14 @@ jobs:
 
       - name: Build docs
         run: yarn run docs:build
+        env:
+          NODE_ENV: production
+          GA_ID: ${{ secrets.GA_ID }}
 
       - name: GitHub Pages
         uses: crazy-max/ghaction-github-pages@v1.3.0
         with:
           # Build directory to deploy
           build_dir: docs/.vuepress/dist
-        
         env:
-          NODE_ENV: production
           GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
-          GA_ID: ${{ secrets.GA_ID }}
