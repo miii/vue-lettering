@@ -45,6 +45,8 @@
     "types/index.d.ts"
   ],
   "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "@rollup/plugin-json": "^4.0.2",
     "@rollup/plugin-typescript": "^4.0.0",
     "@typescript-eslint/eslint-plugin": "^2.18.0",
@@ -61,13 +63,20 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^6.1.2",
+    "husky": "^4.2.3",
     "moment": "^2.24.0",
     "rollup": "^2.1.0",
     "rollup-plugin-delete": "^1.2.0",
     "rollup-plugin-terser": "^5.3.0",
     "typescript": "^3.8.3",
     "vue": "^2.6.11",
+    "vue-cli-plugin-p11n": "^0.4.0",
     "vue-template-compiler": "^2.6.11",
     "vuepress": "^1.4.0"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }
