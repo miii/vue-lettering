@@ -78,7 +78,7 @@ export const defaults: VueLetteringOptions = {
  * @param el HTML element
  * @param binding Vue directive binding
  */
-export const bind = (el: HTMLElement, binding: DirectiveBinding) => {
+const bind = (el: HTMLElement, binding: DirectiveBinding) => {
   // Get text contnet
   const text = el.textContent?.trim() || ''
 
@@ -140,4 +140,8 @@ export const bind = (el: HTMLElement, binding: DirectiveBinding) => {
 
   // Initiate split
   runSplit(el, text.split(splits[0]))
+}
+
+export const directive = {
+  bind
 }

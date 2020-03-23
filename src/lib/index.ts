@@ -1,7 +1,6 @@
 import { VueConstructor, PluginObject } from 'vue'
 import { version } from '../../package.json'
-import { bind, PartialVueLetteringOptions, defaults } from './lettering'
-
+import { defaults, directive, PartialVueLetteringOptions } from './lettering'
 declare global {
   interface Window {
     Vue: VueConstructor;
@@ -16,7 +15,7 @@ const install = (Vue: VueConstructor, options?: PartialVueLetteringOptions): voi
       defaults[key] = options[key]
     })
 
-  Vue.directive('lettering', { bind })
+  Vue.directive('lettering', directive)
 }
 
 const plugin: PluginObject<PartialVueLetteringOptions> = {
