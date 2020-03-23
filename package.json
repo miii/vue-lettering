@@ -21,13 +21,11 @@
     "url": "https://github.com/miii/vue-lettering/issues"
   },
   "scripts": {
-    "serve": "vue-cli-service demo Demo.vue",
-    "build": "vue-cli-service build",
+    "serve": "vue-cli-service serve",
+    "build": "NODE_ENV=production rollup -c",
     "lint": "vue-cli-service lint",
-    "demo": "vue-cli-service demo",
-    "docs": "npm run docs:serve",
-    "docs:build": "NODE_ENV=production vue-cli-service docs --mode build",
-    "docs:serve": "vue-cli-service docs --mode serve",
+    "docs": "vuepress dev docs",
+    "docs:build": "NODE_ENV=production vuepress build docs",
     "prepublish": "npm run lint && npm run docs:build && npm run build",
     "start": "vue-cli-service serve",
     "commit": "npx git-cz"
@@ -46,10 +44,11 @@
     "src",
     "types/index.d.ts"
   ],
-  "dependencies": {},
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
+    "@rollup/plugin-json": "^4.0.2",
+    "@rollup/plugin-typescript": "^4.0.0",
     "@typescript-eslint/eslint-plugin": "^2.18.0",
     "@typescript-eslint/parser": "^2.18.0",
     "@vue/cli-plugin-eslint": "^4.2.0",
@@ -65,10 +64,15 @@
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^6.1.2",
     "husky": "^4.2.3",
+    "moment": "^2.24.0",
+    "rollup": "^2.1.0",
+    "rollup-plugin-delete": "^1.2.0",
+    "rollup-plugin-terser": "^5.3.0",
     "typescript": "^3.8.3",
     "vue": "^2.6.11",
     "vue-cli-plugin-p11n": "^0.4.0",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "vuepress": "^1.4.0"
   },
   "husky": {
     "hooks": {

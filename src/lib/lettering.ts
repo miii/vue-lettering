@@ -5,7 +5,7 @@ type Splits = RegExpOrString | RegExpOrString[];
 type StringOrNull = string | null;
 type ClassNameModifier = (index: number, level: number, char: string) => StringOrNull;
 
-interface PluginDirectiveOptions {
+interface VueLetteringOptions {
   /**
    * HTML tag name
    * @default span
@@ -58,10 +58,10 @@ interface PluginDirectiveOptions {
    */
   beforeAppend?: (element: HTMLElement, index: number, level: number) => unknown;
 }
-export type VueLetteringOptions = Partial<PluginDirectiveOptions>
+export type PartialVueLetteringOptions = Partial<VueLetteringOptions>
 
 // Default plugin options
-export const defaults: PluginDirectiveOptions = {
+export const defaults: VueLetteringOptions = {
   tagName: 'span',
   splits: [''],
   char: (text) => text.replace(' ', '&nbsp;'),
@@ -86,7 +86,7 @@ export const bind = (el: HTMLElement, binding: DirectiveBinding) => {
   let bindingValue = binding.value
   if (Array.isArray(bindingValue)) bindingValue = { splits: bindingValue }
 
-  const options: PluginDirectiveOptions = { ...defaults, ...bindingValue }
+  const options: VueLetteringOptions = { ...defaults, ...bindingValue }
   options.tagName = Object.keys(binding.modifiers)[0] || options.tagName
 
   // Create array/function if strings are provided
