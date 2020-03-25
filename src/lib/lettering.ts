@@ -1,4 +1,5 @@
 import { DirectiveBinding } from 'vue/types/options'
+import { VNode } from 'vue/types'
 
 type RegExpOrString = RegExp | string;
 type Splits = RegExpOrString | RegExpOrString[];
@@ -84,17 +85,23 @@ export const classNames = {
 }
 
 /**
- * Directive bind callback
+ * Directive inserted callback
  * @param el HTML element
  * @param binding Vue directive binding
+ * @param vnode Vue VNode
  */
-const bind = (el: HTMLElement, binding: DirectiveBinding) => {
-  // Get text contnet
-  const text = el.textContent?.trim() || ''
+const inserted = (el: HTMLElement, binding: DirectiveBinding, vnode?: VNode) => {
+  let text: string
+  if (vnode)
+    // Get text content from template VNode (on update)
+    text = (vnode.children && vnode.children[0].text) || ''
+  else
+    // Use element text content
+    text = el.textContent || ''
 
   // Create options object
   let bindingValue = binding.value
-  if (Array.isArray(bindingValue)) bindingValue = { splits: bindingValue }
+  if (bindingValue !== undefined && typeof bindingValue !== 'object') bindingValue = { splits: bindingValue }
 
   const options: VueLetteringOptions = { ...defaults, ...bindingValue }
   options.tagName = Object.keys(binding.modifiers)[0] || options.tagName
@@ -153,5 +160,6 @@ const bind = (el: HTMLElement, binding: DirectiveBinding) => {
 }
 
 export const directive = {
-  bind
+  inserted,
+  componentUpdated: inserted
 }
