@@ -5,7 +5,7 @@ type Splits = RegExpOrString | RegExpOrString[];
 type StringOrNull = string | null;
 type ClassNameModifier = (index: number, level: number, char: string) => StringOrNull;
 
-interface VueLetteringOptions {
+export interface VueLetteringOptions {
   /**
    * HTML tag name
    * @default span
@@ -33,7 +33,7 @@ interface VueLetteringOptions {
   /**
    * Enable helper class names injection
    */
-  classNameInjection: {
+  classNameInjection: Partial<{
     /**
      * vl__group class name
      * @default true
@@ -51,14 +51,13 @@ interface VueLetteringOptions {
      * @default true
      */
     index: boolean;
-  };
+  }>;
 
   /**
    * Before append hook
    */
   beforeAppend?: (element: HTMLElement, index: number, level: number) => unknown;
 }
-export type PartialVueLetteringOptions = Partial<VueLetteringOptions>
 
 // Default plugin options
 export const defaults: VueLetteringOptions = {
@@ -71,6 +70,17 @@ export const defaults: VueLetteringOptions = {
     level: true,
     index: true
   }
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const setDefaultOption = (key: keyof VueLetteringOptions, value: any) => {
+  defaults[key] = value
+}
+
+export const classNames = {
+  group: 'vl__g',
+  level: (n: number) => `vl--lvl-${n}`,
+  index: (n: number) => `vl--i-${n}`
 }
 
 /**
@@ -126,12 +136,12 @@ const bind = (el: HTMLElement, binding: DirectiveBinding) => {
       if (className) subEl.classList.add(className)
 
       // Inject helper class names
-      if (options.classNameInjection.group) subEl.classList.add('vl__g')
-      if (options.classNameInjection.level && splits.length > 1) subEl.classList.add(`vl--lvl-${level}`)
-      if (options.classNameInjection.index) subEl.classList.add(`vl--i-${index + 1}`)
+      if (options.classNameInjection.group) subEl.classList.add(classNames.group)
+      if (options.classNameInjection.level && splits.length > 1) subEl.classList.add(classNames.level(level))
+      if (options.classNameInjection.index) subEl.classList.add(classNames.index(index + 1))
 
       // Run beforeAppend hook
-      if (options.beforeAppend) options.beforeAppend(el, index + 1, level)
+      if (options.beforeAppend) options.beforeAppend(subEl, index + 1, level)
 
       // Split another level
       runSplit(subEl, group.split(splits[level]), level + 1)
