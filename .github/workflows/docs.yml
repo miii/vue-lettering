@@ -1,0 +1,32 @@
+name: Deploy docs
+on:
+  push:
+    branches:
+      - master
+jobs:
+  unit_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: yarn install
+      - name: Run unit tests
+        run: yarn test
+  deploy_pages:
+    needs: unit_tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: yarn install
+      - name: Build docs
+        run: yarn run docs:build
+        env:
+          NODE_ENV: production
+          GA_ID: ${{ secrets.GA_ID }}
+      - name: GitHub Pages
+        uses: crazy-max/ghaction-github-pages@v1.3.0
+        with:
+          build_dir: docs/.vuepress/dist
+        env:
+          GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
