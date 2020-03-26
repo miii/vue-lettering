@@ -2,6 +2,7 @@ import typescript from '@rollup/plugin-typescript'
 import json from '@rollup/plugin-json'
 import { terser } from 'rollup-plugin-terser'
 import del from 'rollup-plugin-delete'
+import replace from 'rollup-plugin-replace'
 
 import moment from 'moment'
 import pkg from './package.json'
@@ -53,7 +54,10 @@ export default [
     plugins: [
       del({ targets: 'dist/' }),
       typescript(),
-      json()
+      json(),
+      replace({
+        'process.env.NODE_ENV': JSON.stringify('production')
+      })
     ]
   }
 ]

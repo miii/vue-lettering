@@ -26,11 +26,6 @@
   "bugs": {
     "url": "https://github.com/miii/vue-lettering/issues"
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
   "files": [
     "dist/vue-lettering.common.js",
     "dist/vue-lettering.umd.min.js",
@@ -41,13 +36,13 @@
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "NODE_ENV=production rollup -c",
+    "build": "rollup -c",
     "test": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "commit": "npx git-cz",
     "docs": "vuepress dev docs",
     "docs:build": "NODE_ENV=production vuepress build docs",
-    "prepublish": "npm run lint && npm run test && npm run docs:build && npm run build",
+    "prepublish": "in-publish && npm run lint && npm run test && npm run docs:build && npm run build",
     "start": "vue-cli-service serve"
   },
   "devDependencies": {
@@ -74,14 +69,21 @@
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^6.1.2",
     "husky": "^4.2.3",
+    "in-publish": "^2.0.1",
     "moment": "^2.24.0",
     "rollup": "^2.1.0",
     "rollup-plugin-delete": "^1.2.0",
+    "rollup-plugin-replace": "^2.2.0",
     "rollup-plugin-terser": "^5.3.0",
     "typescript": "^3.8.3",
     "vue": "^2.6.11",
     "vue-cli-plugin-p11n": "^0.4.0",
     "vue-template-compiler": "^2.6.11",
     "vuepress": "^1.4.0"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }
