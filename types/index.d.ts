@@ -7,3 +7,9 @@ export {
 
 declare const _default: PluginObject<Partial<VueLetteringOptions>> & DirectiveOptions
 export default _default
+
+declare module '@nuxt/types/config/index' {
+  interface Configuration {
+    lettering: Partial<VueLetteringOptions>;
+  }
+}
