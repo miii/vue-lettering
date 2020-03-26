@@ -1,4 +1,4 @@
-# @miii/vue-lettering<br>![NPM badge](https://img.shields.io/npm/v/@miii/vue-lettering) ![Minified size](https://img.shields.io/bundlephobia/min/@miii/vue-lettering)
+# @miii/vue-lettering<br>![tests](https://github.com/miii/vue-lettering/workflows/tests/badge.svg) ![docs](https://github.com/miii/vue-lettering/workflows/docs/badge.svg) ![NPM badge](https://img.shields.io/npm/v/@miii/vue-lettering) ![Minified size](https://img.shields.io/bundlephobia/min/@miii/vue-lettering)
 > Web typography tool for Vue to split text into pieces for CSS selection with ease.<br>
 
 The plugin adds a `v-lettering` directive which can be used to create groups of (individual) letters using `span` or tag of your choice.
