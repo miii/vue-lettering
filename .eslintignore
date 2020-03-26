@@ -1,1 +1,4 @@
 dist/*
+
+# Lodash template
+src/nuxt/plugin.js
