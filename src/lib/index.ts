@@ -1,6 +1,6 @@
 import { VueConstructor, PluginObject } from 'vue'
 import { version } from '../../package.json'
-import { bind, PartialVueLetteringOptions, defaults } from './lettering'
+import { directive, VueLetteringOptions, setDefaultOption } from './lettering'
 
 declare global {
   interface Window {
@@ -8,18 +8,16 @@ declare global {
   }
 }
 
-const install = (Vue: VueConstructor, options?: PartialVueLetteringOptions): void => {
+const install = (Vue: VueConstructor, options?: Partial<VueLetteringOptions>): void => {
+  // Merge options
   if (options)
-    Object.keys(options).forEach((key) => {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-      // @ts-ignore
-      defaults[key] = options[key]
-    })
+    (Object.keys(options) as Array<keyof VueLetteringOptions>)
+      .forEach((key) => setDefaultOption(key, options[key]))
 
-  Vue.directive('lettering', { bind })
+  Vue.directive('lettering', directive)
 }
 
-const plugin: PluginObject<PartialVueLetteringOptions> = {
+const plugin: PluginObject<Partial<VueLetteringOptions>> = {
   install,
   version
 }

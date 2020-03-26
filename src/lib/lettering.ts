@@ -1,11 +1,12 @@
 import { DirectiveBinding } from 'vue/types/options'
+import { VNode } from 'vue/types'
 
 type RegExpOrString = RegExp | string;
 type Splits = RegExpOrString | RegExpOrString[];
 type StringOrNull = string | null;
 type ClassNameModifier = (index: number, level: number, char: string) => StringOrNull;
 
-interface VueLetteringOptions {
+export interface VueLetteringOptions {
   /**
    * HTML tag name
    * @default span
@@ -33,7 +34,7 @@ interface VueLetteringOptions {
   /**
    * Enable helper class names injection
    */
-  classNameInjection: {
+  classNameInjection: Partial<{
     /**
      * vl__group class name
      * @default true
@@ -51,14 +52,13 @@ interface VueLetteringOptions {
      * @default true
      */
     index: boolean;
-  };
+  }>;
 
   /**
    * Before append hook
    */
   beforeAppend?: (element: HTMLElement, index: number, level: number) => unknown;
 }
-export type PartialVueLetteringOptions = Partial<VueLetteringOptions>
 
 // Default plugin options
 export const defaults: VueLetteringOptions = {
@@ -73,18 +73,35 @@ export const defaults: VueLetteringOptions = {
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const setDefaultOption = (key: keyof VueLetteringOptions, value: any) => {
+  defaults[key] = value
+}
+
+export const classNames = {
+  group: 'vl__g',
+  level: (n: number) => `vl--lvl-${n}`,
+  index: (n: number) => `vl--i-${n}`
+}
+
 /**
- * Directive bind callback
+ * Directive inserted callback
  * @param el HTML element
  * @param binding Vue directive binding
+ * @param vnode Vue VNode
  */
-export const bind = (el: HTMLElement, binding: DirectiveBinding) => {
-  // Get text contnet
-  const text = el.textContent?.trim() || ''
+const inserted = (el: HTMLElement, binding: DirectiveBinding, vnode?: VNode) => {
+  let text: string
+  if (vnode)
+    // Get text content from template VNode (on update)
+    text = (vnode.children && vnode.children[0].text) || ''
+  else
+    // Use element text content
+    text = el.textContent || ''
 
   // Create options object
   let bindingValue = binding.value
-  if (Array.isArray(bindingValue)) bindingValue = { splits: bindingValue }
+  if (bindingValue !== undefined && typeof bindingValue !== 'object') bindingValue = { splits: bindingValue }
 
   const options: VueLetteringOptions = { ...defaults, ...bindingValue }
   options.tagName = Object.keys(binding.modifiers)[0] || options.tagName
@@ -126,12 +143,12 @@ export const bind = (el: HTMLElement, binding: DirectiveBinding) => {
       if (className) subEl.classList.add(className)
 
       // Inject helper class names
-      if (options.classNameInjection.group) subEl.classList.add('vl__g')
-      if (options.classNameInjection.level && splits.length > 1) subEl.classList.add(`vl--lvl-${level}`)
-      if (options.classNameInjection.index) subEl.classList.add(`vl--i-${index + 1}`)
+      if (options.classNameInjection.group) subEl.classList.add(classNames.group)
+      if (options.classNameInjection.level && splits.length > 1) subEl.classList.add(classNames.level(level))
+      if (options.classNameInjection.index) subEl.classList.add(classNames.index(index + 1))
 
       // Run beforeAppend hook
-      if (options.beforeAppend) options.beforeAppend(el, index + 1, level)
+      if (options.beforeAppend) options.beforeAppend(subEl, index + 1, level)
 
       // Split another level
       runSplit(subEl, group.split(splits[level]), level + 1)
@@ -140,4 +157,9 @@ export const bind = (el: HTMLElement, binding: DirectiveBinding) => {
 
   // Initiate split
   runSplit(el, text.split(splits[0]))
+}
+
+export const directive = {
+  inserted,
+  componentUpdated: inserted
 }

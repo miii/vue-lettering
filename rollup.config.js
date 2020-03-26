@@ -15,43 +15,45 @@ const banner = '/*\n' +
   `* License: ${pkg.license}\n` +
   '*/'
 
-export default {
-  input: 'src/lib/index.ts',
-  external: Object.keys(pkg.dependencies || []),
-  output: [
-    {
-      file: `dist/${name}.esm.js`,
-      format: 'es',
-      banner
-    },
-    {
-      file: `dist/${name}.common.js`,
-      format: 'cjs',
-      banner
-    },
-    {
-      file: `dist/${name}.umd.js`,
-      format: 'umd',
-      banner,
-      name: moduleName
-    },
-    {
-      file: `dist/${name}.umd.min.js`,
-      format: 'umd',
-      banner,
-      name: moduleName,
-      plugins: [
-        terser({
-          output: {
-            comments: (_, comment) => /@miii/.test(comment.value)
-          }
-        })
-      ]
-    }
-  ],
-  plugins: [
-    del({ targets: 'dist/' }),
-    typescript(),
-    json()
-  ]
-}
+export default [
+  {
+    input: 'src/lib/index.ts',
+    external: Object.keys(pkg.dependencies || []),
+    output: [
+      {
+        file: `dist/${name}.esm.js`,
+        format: 'es',
+        banner
+      },
+      {
+        file: `dist/${name}.common.js`,
+        format: 'cjs',
+        banner
+      },
+      {
+        file: `dist/${name}.umd.js`,
+        format: 'umd',
+        banner,
+        name: moduleName
+      },
+      {
+        file: `dist/${name}.umd.min.js`,
+        format: 'umd',
+        banner,
+        name: moduleName,
+        plugins: [
+          terser({
+            output: {
+              comments: (_, comment) => /@miii/.test(comment.value)
+            }
+          })
+        ]
+      }
+    ],
+    plugins: [
+      del({ targets: 'dist/' }),
+      typescript(),
+      json()
+    ]
+  }
+]
