@@ -22,16 +22,24 @@ describe('directive', () => {
     })
     const wrapper = shallowMount(component)
 
-    it('renders correctly on mount', () => {
+    it('renders groups on mount', () => {
       expect(wrapper.element.children.length).toBe(3)
     })
 
-    it('renders correctly on update', async () => {
+    it('re-renders groups on update', async () => {
       wrapper.setData({ text: 'Foobar' })
       await localVue.nextTick()
 
       expect(wrapper.element.children.length).toBe(6)
     })
+  })
+
+  it('does not break if empty text content', () => {
+    const { el } = createEl('')
+
+    bind(el)
+
+    expect(el.innerHTML.length).toBe(0)
   })
 
   it('complies with the WAI-ARIA guidelines', () => {
@@ -164,13 +172,13 @@ describe('directive', () => {
     describe('className', () => {
       const className = 'test-class'
 
-      it('set as string', () => {
+      it('can be set as string', () => {
         bind(el, { value: { className } })
 
         expect(el.querySelectorAll(`.${className}`).length).toBe(text.length)
       })
 
-      it('set as function', () => {
+      it('can be set as function', () => {
         bind(el, { value: { className: () => className } })
 
         expect(el.querySelectorAll(`.${className}`).length).toBe(text.length)
