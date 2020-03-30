@@ -3,6 +3,7 @@ import json from '@rollup/plugin-json'
 import { terser } from 'rollup-plugin-terser'
 import del from 'rollup-plugin-delete'
 import replace from 'rollup-plugin-replace'
+import copy from 'rollup-plugin-copy'
 
 import moment from 'moment'
 import pkg from './package.json'
@@ -57,6 +58,11 @@ export default [
       json(),
       replace({
         'process.env.NODE_ENV': JSON.stringify('production')
+      }),
+      copy({
+        targets: [
+          { src: 'src/nuxt', dest: 'dist' }
+        ]
       })
     ]
   }

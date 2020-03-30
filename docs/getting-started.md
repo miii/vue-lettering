@@ -52,6 +52,17 @@ Rendered output:
 </h1>
 ```
 
+### Usage with Nuxt
+This plugin ships with a [Nuxt](https://nuxtjs.org/) module to make integration to it even easier.
+```js{4}
+// nuxt.config.js
+module.exports = {
+  modules: [
+    '@miii/vue-lettering/nuxt',
+  ],
+}
+```
+
 ## Advanced usage
 Vue Lettering provides many options to help your customize the behavior of the injection. Options can be applied globally or on individual elements.
 

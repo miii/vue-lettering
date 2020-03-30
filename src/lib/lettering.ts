@@ -90,14 +90,8 @@ export const classNames = {
  * @param binding Vue directive binding
  * @param vnode Vue VNode
  */
-const inserted = (el: HTMLElement, binding: DirectiveBinding, vnode?: VNode) => {
-  let text: string
-  if (vnode)
-    // Get text content from template VNode (on update)
-    text = (vnode.children && vnode.children[0].text) || ''
-  else
-    // Use element text content
-    text = el.textContent || ''
+const inserted = (el: HTMLElement, binding: DirectiveBinding, vnode: VNode) => {
+  const text = (vnode.children && vnode.children[0].text) || ''
 
   // Create options object
   let bindingValue = binding.value

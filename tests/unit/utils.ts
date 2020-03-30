@@ -16,6 +16,9 @@ export const bind = (el: HTMLElement, binding: Partial<PluginBinding> = {}) => {
     modifiers: {},
     name: 'lettering',
     ...binding
+  }, {
+    // @ts-ignore
+    children: [{ text: el.textContent || '' }]
   })
 }
 
