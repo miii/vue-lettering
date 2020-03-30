@@ -5,12 +5,13 @@ The plugin adds a `v-lettering` directive which can be used to create groups of 
 
 Inspired by [Lettering.js](https://github.com/davatron5000/Lettering.js).
 
-
-<strong>Typescript ready 🌟</strong><br>
-<strong>SSR ready 🌟</strong><br>
-<strong>Supports nested splits 🌟</strong>
-
 <img src="https://user-images.githubusercontent.com/158975/76702748-a1ac3300-66cc-11ea-83d1-1bcf6fb24d0b.png" width="500">
+
+## 🚀  Features
+- Typescript ready
+- SSR ready
+- Supports nested splits
+- Nuxt module included
 
 ## 📦  Install
 ```sh

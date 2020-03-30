@@ -15,7 +15,7 @@ import VueLettering from '@miii/vue-lettering'
 
 Vue.use(VueLettering, {
   tagName: 'a',
-  // ...
+  // Other global plugin options...
 })
 ```
 
@@ -27,6 +27,31 @@ Example with option set on specific element:
 ::: warning
 Local options will override equivalent global options.
 :::
+
+### Nuxt module options
+To apply global plugin options when using the Nuxt module, just add them to your config.
+```js{7-9}
+// nuxt.config.js
+module.exports = {
+  modules: [
+    '@miii/vue-lettering/nuxt',
+  ],
+
+  lettering: {
+    // Global plugin options
+  }
+}
+```
+
+If you wish to set your options inline instead, that is supported as well.
+```js
+// nuxt.config.js
+module.exports = {
+  modules: [
+    ['@miii/vue-lettering/nuxt', { /* Plugin options */ }]
+  ],
+}
+```
 
 ## Options
 ### `tagName`
