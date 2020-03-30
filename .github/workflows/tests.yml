@@ -10,4 +10,4 @@ jobs:
       - name: Lint code
         run: yarn lint
       - name: Run unit tests
-        run: yarn test
+        run: yarn test --verbose
