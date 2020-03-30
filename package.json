@@ -27,11 +27,9 @@
     "url": "https://github.com/miii/vue-lettering/issues"
   },
   "files": [
-    "dist/vue-lettering.common.js",
-    "dist/vue-lettering.umd.min.js",
-    "dist/vue-lettering.umd.js",
-    "dist/vue-lettering.esm.js",
+    "dist",
     "src",
+    "nuxt.js",
     "types/index.d.ts"
   ],
   "scripts": {
