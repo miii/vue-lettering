@@ -11,7 +11,7 @@ Inspired by [Lettering.js](https://github.com/davatron5000/Lettering.js).
 - Typescript ready
 - SSR ready
 - Supports nested splits
-- Nuxt module included
+- <a href="https://nuxtjs.org/" target="_blank">Nuxt</a> module included
 
 ## 📦  Install
 ```sh
