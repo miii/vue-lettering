@@ -106,7 +106,9 @@ const inserted = (el: HTMLElement, binding: DirectiveBinding, vnode: VNode) => {
 
   // Create and append character subelements
   el.innerHTML = ''
-  el.setAttribute('aria-label', text)
+
+  if (!el.getAttribute('aria-label'))
+    el.setAttribute('aria-label', text)
 
   /**
    * Run recursive split functions

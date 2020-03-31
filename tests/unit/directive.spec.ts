@@ -61,6 +61,15 @@ describe('directive', () => {
     expect(el.querySelectorAll('[aria-hidden=true]').length).toBe(text.length)
   })
 
+  it('does not override existing aria-label', () => {
+    const { el } = createEl()
+    el.setAttribute('aria-label', 'test')
+
+    bind(el)
+
+    expect(el.getAttribute('aria-label')).toBe('test')
+  })
+
   describe('options', () => {
     let el: HTMLElement
     let text: string
