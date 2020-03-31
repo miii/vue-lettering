@@ -1,9 +1,8 @@
 
-import { createLocalVue, shallowMount } from '@vue/test-utils'
+import { createLocalVue } from '@vue/test-utils'
 
-import { createEl, bind } from './utils'
+import { createEl, bind, createComponent } from './utils'
 import { directive, classNames } from '@/lib/lettering'
-import plugin from '@/lib'
 
 describe('directive', () => {
   it('has an inserted function', () => {
@@ -14,23 +13,34 @@ describe('directive', () => {
   })
 
   describe('vue lifecycle', () => {
-    const localVue = createLocalVue()
-    localVue.use(plugin)
-    const component = localVue.component('test', {
-      data: () => ({ text: 'Foo' }),
-      template: '<h1 v-lettering>{{ text }}</h1>'
+    describe('using slot', () => {
+      const { wrapper, localVue } = createComponent('<h1 v-lettering>{{ text }}</h1>')
+
+      it('renders groups on mount', () => {
+        expect(wrapper.element.children.length).toBe(3)
+      })
+
+      it('re-renders groups on update', async () => {
+        wrapper.setData({ text: 'Foobar' })
+        await localVue.nextTick()
+
+        expect(wrapper.element.children.length).toBe(6)
+      })
     })
-    const wrapper = shallowMount(component)
 
-    it('renders groups on mount', () => {
-      expect(wrapper.element.children.length).toBe(3)
-    })
+    describe('using v-text', () => {
+      const { wrapper, localVue } = createComponent('<h1 v-lettering v-text="text" />')
 
-    it('re-renders groups on update', async () => {
-      wrapper.setData({ text: 'Foobar' })
-      await localVue.nextTick()
+      it('renders groups on mount', () => {
+        expect(wrapper.element.children.length).toBe(3)
+      })
 
-      expect(wrapper.element.children.length).toBe(6)
+      it('re-renders groups on update', async () => {
+        wrapper.setData({ text: 'Foobar' })
+        await localVue.nextTick()
+
+        expect(wrapper.element.children.length).toBe(6)
+      })
     })
   })
 

@@ -91,7 +91,7 @@ export const classNames = {
  * @param vnode Vue VNode
  */
 const inserted = (el: HTMLElement, binding: DirectiveBinding, vnode: VNode) => {
-  const text = (vnode.children && vnode.children[0].text) || ''
+  const text = vnode?.children?.[0]?.text || vnode?.elm?.textContent || ''
 
   // Create options object
   let bindingValue = binding.value

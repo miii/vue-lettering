@@ -1,6 +1,9 @@
+import { DirectiveBinding } from 'vue/types/options'
+import { VNode } from 'vue/types/umd'
+import { createLocalVue, shallowMount } from '@vue/test-utils'
 
 import { directive, VueLetteringOptions } from '@/lib/lettering'
-import { DirectiveBinding } from 'vue/types/options'
+import plugin from '@/lib'
 
 interface PluginBinding extends DirectiveBinding {
   value: Partial<VueLetteringOptions> | VueLetteringOptions['splits'];
@@ -11,14 +14,15 @@ interface PluginBinding extends DirectiveBinding {
  * @param el Element to bind
  * @param binding Directive binding
  */
-export const bind = (el: HTMLElement, binding: Partial<PluginBinding> = {}) => {
+export const bind = (el: HTMLElement, binding: Partial<PluginBinding> = {}, vnode: Partial<VNode> = {}) => {
   return directive.inserted(el, {
     modifiers: {},
     name: 'lettering',
     ...binding
   }, {
     // @ts-ignore
-    children: [{ text: el.textContent || '' }]
+    children: [{ text: el.textContent || '' }],
+    ...vnode
   })
 }
 
@@ -31,4 +35,21 @@ export const createEl = (text = 'Foo bar') => {
   el.textContent = text
 
   return { el, text }
+}
+
+/**
+ * Create component and shallow mount it
+ * @param template Template to render
+ * @param data Set component data
+ */
+export const createComponent = (template: string, data: unknown = { text: 'Foo' }) => {
+  const localVue = createLocalVue()
+  localVue.use(plugin)
+  const component = localVue.component('test', {
+    data: () => data,
+    template
+  })
+  const wrapper = shallowMount(component)
+
+  return { localVue, component, wrapper }
 }
