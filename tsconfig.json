@@ -12,7 +12,6 @@
     "resolveJsonModule": true,
     "baseUrl": ".",
     "types": [
-      "webpack-env",
       "jest",
       "node"
     ],
