@@ -1,3 +1,4 @@
+import deepmerge from 'deepmerge'
 import { DirectiveBinding } from 'vue/types/options'
 import { VNode } from 'vue/types'
 
@@ -34,7 +35,7 @@ export interface VueLetteringOptions {
   /**
    * Enable helper class names injection
    */
-  classNameInjection: Partial<{
+  classNameInjection: false | Partial<{
     /**
      * vl__group class name
      * @default true
@@ -75,7 +76,12 @@ export const defaults: VueLetteringOptions = {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const setDefaultOption = (key: keyof VueLetteringOptions, value: any) => {
-  defaults[key] = value
+  if (key === 'classNameInjection')
+    // Merge with existing config
+    defaults.classNameInjection = Object.assign({}, defaults.classNameInjection, value)
+  else
+    // All other properties
+    defaults[key] = value
 }
 
 export const classNames = {
@@ -95,9 +101,11 @@ const bind = (el: HTMLElement, binding: DirectiveBinding, vnode: VNode) => {
 
   // Create options object
   let bindingValue = binding.value
-  if (bindingValue !== undefined && typeof bindingValue !== 'object') bindingValue = { splits: bindingValue }
+  if (bindingValue && (typeof bindingValue !== 'object' || Array.isArray(bindingValue))) bindingValue = { splits: bindingValue }
 
-  const options: VueLetteringOptions = { ...defaults, ...bindingValue }
+  const options: VueLetteringOptions = deepmerge(defaults, bindingValue || {}, {
+    arrayMerge: (dest, source) => source
+  })
   options.tagName = Object.keys(binding.modifiers)[0] || options.tagName
 
   // Create array/function if strings are provided
@@ -119,6 +127,8 @@ const bind = (el: HTMLElement, binding: DirectiveBinding, vnode: VNode) => {
   const runSplit = (el: HTMLElement, groups: string[], level = 1) => {
     // Check if all leafs are found
     if (level > splits.length) {
+      if (typeof options.char !== 'function')
+        console.error('Error', options)
       // Add character
       el.innerHTML = options.char(groups[0])
 
@@ -139,9 +149,11 @@ const bind = (el: HTMLElement, binding: DirectiveBinding, vnode: VNode) => {
       if (className) subEl.classList.add(className)
 
       // Inject helper class names
-      if (options.classNameInjection.group) subEl.classList.add(classNames.group)
-      if (options.classNameInjection.level && splits.length > 1) subEl.classList.add(classNames.level(level))
-      if (options.classNameInjection.index) subEl.classList.add(classNames.index(index + 1))
+      if (options.classNameInjection) {
+        if (options.classNameInjection.group) subEl.classList.add(classNames.group)
+        if (options.classNameInjection.level && splits.length > 1) subEl.classList.add(classNames.level(level))
+        if (options.classNameInjection.index) subEl.classList.add(classNames.index(index + 1))
+      }
 
       // Run beforeAppend hook
       if (options.beforeAppend) options.beforeAppend(subEl, index + 1, level)

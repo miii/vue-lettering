@@ -90,5 +90,8 @@
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-push": "npm run prepush"
     }
+  },
+  "dependencies": {
+    "deepmerge": "^4.2.2"
   }
 }

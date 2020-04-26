@@ -227,6 +227,10 @@ Will output:
 </h1>
 ```
 
+::: tip
+You may disable all class name injections by setting `classNameInjection` to `false`.
+:::
+
 ### `beforeAppend`
 > **Type**: `(element: HTMLElement, index: number, level: number) => unknown`
 

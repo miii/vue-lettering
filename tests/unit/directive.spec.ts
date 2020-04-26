@@ -208,7 +208,8 @@ describe('directive', () => {
       it('can disable group class name', () => {
         bind(el, { value: { classNameInjection: { group: false } } })
 
-        expect(el.querySelectorAll(classNames.group).length).toBe(0)
+        expect(el.querySelectorAll(`.${classNames.group}`).length).toBe(0)
+        expect(el.querySelectorAll(`.${classNames.index(1)}`).length).toBeGreaterThan(0)
       })
 
       it('can disable level class name', () => {
@@ -216,7 +217,8 @@ describe('directive', () => {
 
         bind(el, { value: { classNameInjection: { level: false } } })
 
-        expect(el.querySelectorAll(classNames.level(1)).length).toBe(0)
+        expect(el.querySelectorAll(`.${classNames.level(1)}`).length).toBe(0)
+        expect(el.querySelectorAll(`.${classNames.index(1)}`).length).toBeGreaterThan(0)
       })
 
       it('can disable index class name', () => {
@@ -224,7 +226,16 @@ describe('directive', () => {
 
         bind(el, { value: { classNameInjection: { index: false } } })
 
-        expect(el.querySelectorAll(classNames.index(1)).length).toBe(0)
+        expect(el.querySelectorAll(`.${classNames.index(1)}`).length).toBe(0)
+        expect(el.querySelectorAll(`.${classNames.group}`).length).toBeGreaterThan(0)
+      })
+
+      it('can disable all class names with value: false', () => {
+        bind(el, { value: { classNameInjection: false } })
+
+        expect(el.querySelectorAll(`.${classNames.group}`).length).toBe(0)
+        expect(el.querySelectorAll(`.${classNames.index(1)}`).length).toBe(0)
+        expect(el.querySelectorAll(`.${classNames.level(1)}`).length).toBe(0)
       })
     })
 
