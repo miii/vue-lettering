@@ -15,7 +15,7 @@ interface PluginBinding extends DirectiveBinding {
  * @param binding Directive binding
  */
 export const bind = (el: HTMLElement, binding: Partial<PluginBinding> = {}, vnode: Partial<VNode> = {}) => {
-  return directive.inserted(el, {
+  return directive.bind(el, {
     modifiers: {},
     name: 'lettering',
     ...binding

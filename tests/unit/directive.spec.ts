@@ -5,8 +5,8 @@ import { createEl, bind, createComponent } from './utils'
 import { directive, classNames } from '@/lib/lettering'
 
 describe('directive', () => {
-  it('has an inserted function', () => {
-    expect(typeof directive.inserted).toBe('function')
+  it('has an bind function', () => {
+    expect(typeof directive.bind).toBe('function')
   })
   it('has a componentUpdated function', () => {
     expect(typeof directive.componentUpdated).toBe('function')

@@ -85,13 +85,13 @@ export const classNames = {
 }
 
 /**
- * Directive inserted callback
+ * Directive bind callback
  * @param el HTML element
  * @param binding Vue directive binding
  * @param vnode Vue VNode
  */
-const inserted = (el: HTMLElement, binding: DirectiveBinding, vnode: VNode) => {
-  const text = vnode?.children?.[0]?.text || vnode?.elm?.textContent || ''
+const bind = (el: HTMLElement, binding: DirectiveBinding, vnode: VNode) => {
+  const text = vnode?.children?.[0]?.text?.trim() || vnode?.elm?.textContent?.trim() || ''
 
   // Create options object
   let bindingValue = binding.value
@@ -156,6 +156,6 @@ const inserted = (el: HTMLElement, binding: DirectiveBinding, vnode: VNode) => {
 }
 
 export const directive = {
-  inserted,
-  componentUpdated: inserted
+  bind,
+  componentUpdated: bind
 }
