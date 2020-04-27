@@ -10,6 +10,6 @@ export default _default
 
 declare module '@nuxt/types/config/index' {
   interface Configuration {
-    lettering: Partial<VueLetteringOptions>;
+    lettering?: Partial<VueLetteringOptions>;
   }
 }

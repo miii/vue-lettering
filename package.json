@@ -1,6 +1,6 @@
 {
   "name": "@miii/vue-lettering",
-  "version": "1.1.2",
+  "version": "1.1.3-alpha.2",
   "description": "Web typography tool for Vue to split text into pieces for CSS selection with ease.",
   "author": "Jacob Andersson",
   "license": "MIT",
@@ -53,6 +53,7 @@
     "@rollup/plugin-json": "^4.0.2",
     "@rollup/plugin-typescript": "^4.0.0",
     "@types/jest": "^25.1.4",
+    "@types/lodash": "^4.14.150",
     "@types/node": "^13.9.5",
     "@typescript-eslint/eslint-plugin": "^2.18.0",
     "@typescript-eslint/parser": "^2.18.0",

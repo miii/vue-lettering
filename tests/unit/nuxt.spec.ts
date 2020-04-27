@@ -45,14 +45,14 @@ describe('nuxt module', () => {
       jest.mock('vue')
       jest.mock('@miii/vue-lettering', () => ({ fake: true }), { virtual: true })
       const Vue = require('vue')
-      const serialize = obj => JSON.stringify(obj)
+      const serialize = (obj: unknown) => JSON.stringify(obj)
       const options = { isFakeOptions: true }
       const pluginFile = readFileSync(require.resolve('@/nuxt/plugin.js'), 'utf-8')
       const compiledPlugin = template(pluginFile)({ serialize, options })
-      const transpiledCode = transformSync(compiledPlugin).code
+      const transpiledCode = transformSync(compiledPlugin)!.code
 
       // eslint-disable-next-line no-eval
-      eval(transpiledCode)
+      eval(transpiledCode!)
 
       expect(Vue.use.mock.calls[0][0]).toEqual({ fake: true })
       expect(Vue.use.mock.calls[0][1]).toEqual(options)

@@ -17,6 +17,11 @@ const banner = '/*\n' +
   `* License: ${pkg.license}\n` +
   '*/'
 
+const defaultOutput = {
+  banner,
+  exports: 'named'
+}
+
 export default [
   {
     input: 'src/lib/index.ts',
@@ -25,23 +30,23 @@ export default [
       {
         file: `dist/${name}.esm.js`,
         format: 'es',
-        banner
+        ...defaultOutput
       },
       {
         file: `dist/${name}.common.js`,
         format: 'cjs',
-        banner
+        ...defaultOutput
       },
       {
         file: `dist/${name}.umd.js`,
         format: 'umd',
-        banner,
+        ...defaultOutput,
         name: moduleName
       },
       {
         file: `dist/${name}.umd.min.js`,
         format: 'umd',
-        banner,
+        ...defaultOutput,
         name: moduleName,
         plugins: [
           terser({
@@ -58,10 +63,31 @@ export default [
       json(),
       replace({
         'process.env.NODE_ENV': JSON.stringify('production')
+      })
+    ]
+  },
+  {
+    input: 'src/nuxt/index.ts',
+    external: Object.keys(pkg.dependencies || []),
+    output: [
+      {
+        file: 'dist/nuxt/index.js',
+        format: 'es',
+        ...defaultOutput
+      }
+    ],
+    plugins: [
+      typescript(),
+      json(),
+      replace({
+        'process.env.NODE_ENV': JSON.stringify('production')
       }),
       copy({
         targets: [
-          { src: 'src/nuxt', dest: 'dist' }
+          {
+            src: 'src/nuxt/plugin.js',
+            dest: 'dist/nuxt'
+          }
         ]
       })
     ]
