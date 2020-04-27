@@ -49,9 +49,9 @@ describe('nuxt module', () => {
       const options = { isFakeOptions: true }
       const pluginFile = readFileSync(require.resolve('@/nuxt/plugin.js'), 'utf-8')
       const compiledPlugin = template(pluginFile)({ serialize, options })
-      const transpiledCode = transformSync(compiledPlugin)!.code
+      const transpiledCode = transformSync(compiledPlugin)?.code
 
-      // eslint-disable-next-line no-eval
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion, no-eval
       eval(transpiledCode!)
 
       expect(Vue.use.mock.calls[0][0]).toEqual({ fake: true })
