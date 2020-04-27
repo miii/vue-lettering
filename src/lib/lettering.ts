@@ -165,6 +165,9 @@ const bind = (el: HTMLElement, binding: DirectiveBinding, vnode: VNode) => {
 
   // Initiate split
   runSplit(el, text.split(splits[0]))
+
+  // Remove loading selector
+  el.removeAttribute('data-lettering')
 }
 
 export const directive = {
