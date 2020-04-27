@@ -8,6 +8,7 @@ import { bindSSR } from '@/lib/lettering.ssr'
  * @param {string} path Target path
  * @param {function} callback Callback after target was found
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const getObj = (root: any, path: string, callback: (obj: any) => any) => {
   let obj = root
   path.split('.').forEach(p => {
@@ -23,6 +24,7 @@ const getObj = (root: any, path: string, callback: (obj: any) => any) => {
 /**
  * Nuxt module
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function VueLetteringModule (this: any, moduleOptions?: Partial<VueLetteringOptions>) {
   const options = Object.assign({}, this.options.lettering, moduleOptions)
 
