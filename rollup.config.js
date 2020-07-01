@@ -19,7 +19,8 @@ const banner = '/*\n' +
 
 const defaultOutput = {
   banner,
-  exports: 'named'
+  exports: 'named',
+  sourcemap: true
 }
 
 export default [
