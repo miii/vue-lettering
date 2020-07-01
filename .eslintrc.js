@@ -20,7 +20,7 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
 
     // https://eslint.org/docs/rules/curly#consistent
-    'curly': ['error', 'multi', 'consistent'],
+    curly: ['error', 'multi', 'consistent']
   },
 
   overrides: [
