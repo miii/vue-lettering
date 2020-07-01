@@ -51,7 +51,7 @@
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
     "@rollup/plugin-json": "^4.0.2",
-    "@rollup/plugin-typescript": "^4.0.0",
+    "@rollup/plugin-typescript": "^5.0.1",
     "@types/jest": "^25.1.4",
     "@types/lodash": "^4.14.150",
     "@types/node": "^13.9.5",
