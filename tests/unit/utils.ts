@@ -20,6 +20,7 @@ export const bind = (el: HTMLElement, binding: Partial<PluginBinding> = {}, vnod
     name: 'lettering',
     ...binding
   }, {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     children: [{ text: el.textContent || '' }],
     ...vnode

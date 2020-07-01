@@ -20,7 +20,10 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
 
     // https://eslint.org/docs/rules/curly#consistent
-    curly: ['error', 'multi', 'consistent']
+    curly: ['error', 'multi', 'consistent'],
+
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/explicit-module-boundary-types.md
+    '@typescript-eslint/explicit-module-boundary-types': 'off'
   },
 
   overrides: [

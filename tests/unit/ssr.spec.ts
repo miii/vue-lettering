@@ -3,7 +3,11 @@ import { bindSSR } from '@/lib/lettering.ssr'
 
 describe('SSR directive', () => {
   it('sets the data-lettering attribute', () => {
-    const vnode = {
+    const vnode: {
+      context: {
+        $attrs: Record<string, string>
+      }
+    } = {
       context: {
         $attrs: {}
       }
@@ -11,7 +15,6 @@ describe('SSR directive', () => {
 
     bindSSR(vnode as VNode)
 
-    // @ts-ignore
     expect(vnode.context.$attrs['data-lettering']).toBe('loading')
   })
 })

@@ -13,7 +13,6 @@ describe('nuxt module', () => {
     it('adds plugin.js as a nuxt plugin', () => {
       const addPlugin = jest.fn()
 
-      // @ts-ignore
       nuxtModule.apply({
         options: {},
         addPlugin
@@ -28,7 +27,6 @@ describe('nuxt module', () => {
       const optionsA = { tagName: 'a' }
       const optionsB = { className: 'b' }
 
-      // @ts-ignore
       nuxtModule.apply({
         options: { lettering: optionsA },
         addPlugin
